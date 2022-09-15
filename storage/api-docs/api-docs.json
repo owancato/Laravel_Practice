@@ -1,0 +1,128 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文件練習",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "Localhost"
+        }
+    ],
+    "paths": {
+        "/api/login2": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "登入",
+                "description": "登入",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "信箱",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "密碼",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功登入",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "狀態",
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "code": {
+                                            "description": "狀態碼",
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "description": "回傳說明",
+                                            "type": "string",
+                                            "example": "成功登入"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "信箱or密碼錯誤",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "狀態",
+                                            "type": "string",
+                                            "example": "fail"
+                                        },
+                                        "code": {
+                                            "description": "狀態碼",
+                                            "type": "integer",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "description": "回傳說明",
+                                            "type": "string",
+                                            "example": "信箱or密碼錯誤"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "信箱或密碼不符合格式",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "狀態",
+                                            "type": "string",
+                                            "example": "fail"
+                                        },
+                                        "code": {
+                                            "description": "狀態碼",
+                                            "type": "integer",
+                                            "example": "401"
+                                        },
+                                        "message": {
+                                            "description": "回傳說明",
+                                            "type": "string",
+                                            "example": "信箱或密碼不符合格式"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
